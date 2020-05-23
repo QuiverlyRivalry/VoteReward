@@ -60,7 +60,9 @@ class Main extends PluginBase {
         $this->items = [];
         foreach($config["Items"] as $i) {
             $r = explode(":", $i);
-            $this->items[] = new Item($r[0], $r[1], $r[2]);
+            $alpha = new Item($r[0], $r[1]);
+            $alpha->setCount($r[2]);
+            $this->items[] = $alpha;
         }
         $this->commands = $config["Commands"];
         $this->debug = isset($config["Debug"]) && $config["Debug"] === true ? true : false;
